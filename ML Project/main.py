@@ -35,6 +35,12 @@ def main():
             raise FileNotFoundError('No csv file in the directory')
         csv_file=display_and_select_csv(csv_files)
         print(csv_file,'is selected')
+        print('Reading csv file')
+        print('Creating Dataset')
+        dataset=pd.read_csv(csv_file)
+        print('Created dataset')
+        x=dataset.iloc[:,:-1].values
+        y=dataset.iloc[:,-1].values
 
     except FileNotFoundError:
         print('No csv file in the directory')
