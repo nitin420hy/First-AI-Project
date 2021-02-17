@@ -2,6 +2,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import sklearn.model_selection from train_test_split
 
 def welcome():
     print("Welcome to Salary Prediction System")
@@ -41,6 +42,10 @@ def main():
         print('Created dataset')
         x=dataset.iloc[:,:-1].values
         y=dataset.iloc[:,-1].values
+        
+        s=float(input("Enter test data size (between 0 and 1)"))
+        x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=s)
+
 
     except FileNotFoundError:
         print('No csv file in the directory')
