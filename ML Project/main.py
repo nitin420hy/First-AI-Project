@@ -20,11 +20,25 @@ def checkcsv():
     else:
         return csv_files
     
+def display_and_select_csv(csv_files):
+    i=0
+    for file_name in csv_files:
+        print(i,'...',file_name)
+        i+=1
+    return csv_files[int(input("select file to create ML Model"))]
 
 def main():
     welcome()
     try:
         csv_files=checkcsv()
+        if csv_files=='No csv file in the directory':
+            raise FileNotFoundError('No csv file in the directory')
+        csv_file=display_and_select_csv(csv_files)
+        print(csv_file,'is selected')
+
+    except FileNotFoundError:
+        print('No csv file in the directory')
+        
 
 if __name__=="__main__":
     main()
