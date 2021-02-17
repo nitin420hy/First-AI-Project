@@ -2,7 +2,8 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import sklearn.model_selection from train_test_split
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
 
 def welcome():
     print("Welcome to Salary Prediction System")
@@ -45,6 +46,16 @@ def main():
         
         s=float(input("Enter test data size (between 0 and 1)"))
         x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=s)
+        
+        print("Model creation in progression")
+        regressionObject=LinearRegression()
+        regressionObject.fit(x_train,y_train)
+        print("Model is created")
+        print("Pres Enter key to predict test data in trained model")
+        input()
+
+        y_pred=regressionObject.predict(x_test)
+        
 
 
     except FileNotFoundError:
